@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "768704242589",
+    "project_id": "fireabasetest123",
+    "storage_bucket": "fireabasetest123.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768704242589:android:45fd649216540ebdcfc574",
+        "android_client_info": {
+          "package_name": "com.example.fire_bse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJQ1CgO8m72VVyKLwVq6s1wp3fMD8U1Us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

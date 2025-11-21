@@ -5,4 +5,5 @@ abstract class auth_repository {
   Future<void>Signup(SignupEntity entity);
   Future<void>Login(LoginEntity entity);
   Future<void>GooglesignIn();
+  Future<void>LogOut();
 }

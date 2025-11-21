@@ -6,4 +6,8 @@ class GoogleSigninUsecase {
   Future<void>Googlesignin(){
     return repository.GooglesignIn();
   }
+
+  Future<void>GoogleSignout(){
+    return repository.LogOut();
+  }
 }

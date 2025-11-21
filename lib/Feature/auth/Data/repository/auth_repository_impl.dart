@@ -22,7 +22,6 @@ class SignupRepositoryimpl implements auth_repository {
       );
       log("UID: ${userCredential}");
       final user = FirebaseAuth.instance.currentUser;
-
       if (user != null) {
         await user.updateDisplayName(entity.name);
         await user.reload();
@@ -59,26 +58,29 @@ class SignupRepositoryimpl implements auth_repository {
     } on FirebaseAuthException catch (e) {
        log("FirebaseAuthException: ${e.code} - ${e.message}");
       throw Exception(e.message ?? "Login  failed");
-    } catch (e) {
-      throw Exception(e.toString());
-    }
+    } 
   }
   
   @override
   Future<void> GooglesignIn() async{
     final GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
     if(googleuser ==null) return;
-      log("////////googleuser////////");
+      // log("////////googleuser////////");
     final GoogleAuth =await googleuser.authentication;
-    ("////////GoogleAuth////////");
+    // ("////////GoogleAuth////////");
     final credentional =await GoogleAuthProvider.credential(
       accessToken: GoogleAuth.accessToken,
       idToken: GoogleAuth.idToken
     );
        log("////////credentional////////");
   final result=  await auth.signInWithCredential(credentional);
-  log("result of goodle signin $result");
-  print("////////////////////////////");
+  // log("result of goodle signin $result");
+  // print("////////////////////////////");
 
+  }
+  
+  @override
+  Future<void> LogOut() async{
+ return  await auth.signOut();
   }
 }

@@ -55,13 +55,14 @@ extension SignupEventPatterns on SignupEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SignupPressed value)?  signupPressed,TResult Function( LoginPressed value)?  loginPressed,TResult Function( GoogleSignIn value)?  googleSignIn,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SignupPressed value)?  signupPressed,TResult Function( LoginPressed value)?  loginPressed,TResult Function( GoogleSignIn value)?  googleSignIn,TResult Function( Logout value)?  logout,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SignupPressed() when signupPressed != null:
 return signupPressed(_that);case LoginPressed() when loginPressed != null:
 return loginPressed(_that);case GoogleSignIn() when googleSignIn != null:
-return googleSignIn(_that);case _:
+return googleSignIn(_that);case Logout() when logout != null:
+return logout(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return googleSignIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SignupPressed value)  signupPressed,required TResult Function( LoginPressed value)  loginPressed,required TResult Function( GoogleSignIn value)  googleSignIn,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SignupPressed value)  signupPressed,required TResult Function( LoginPressed value)  loginPressed,required TResult Function( GoogleSignIn value)  googleSignIn,required TResult Function( Logout value)  logout,}){
 final _that = this;
 switch (_that) {
 case SignupPressed():
 return signupPressed(_that);case LoginPressed():
 return loginPressed(_that);case GoogleSignIn():
-return googleSignIn(_that);case _:
+return googleSignIn(_that);case Logout():
+return logout(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +104,14 @@ return googleSignIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SignupPressed value)?  signupPressed,TResult? Function( LoginPressed value)?  loginPressed,TResult? Function( GoogleSignIn value)?  googleSignIn,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SignupPressed value)?  signupPressed,TResult? Function( LoginPressed value)?  loginPressed,TResult? Function( GoogleSignIn value)?  googleSignIn,TResult? Function( Logout value)?  logout,}){
 final _that = this;
 switch (_that) {
 case SignupPressed() when signupPressed != null:
 return signupPressed(_that);case LoginPressed() when loginPressed != null:
 return loginPressed(_that);case GoogleSignIn() when googleSignIn != null:
-return googleSignIn(_that);case _:
+return googleSignIn(_that);case Logout() when logout != null:
+return logout(_that);case _:
   return null;
 
 }
@@ -125,12 +128,13 @@ return googleSignIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( dynamic email,  dynamic password,  dynamic displayname)?  signupPressed,TResult Function( dynamic email,  dynamic password)?  loginPressed,TResult Function()?  googleSignIn,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( dynamic email,  dynamic password,  dynamic displayname)?  signupPressed,TResult Function( dynamic email,  dynamic password)?  loginPressed,TResult Function()?  googleSignIn,TResult Function()?  logout,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SignupPressed() when signupPressed != null:
 return signupPressed(_that.email,_that.password,_that.displayname);case LoginPressed() when loginPressed != null:
 return loginPressed(_that.email,_that.password);case GoogleSignIn() when googleSignIn != null:
-return googleSignIn();case _:
+return googleSignIn();case Logout() when logout != null:
+return logout();case _:
   return orElse();
 
 }
@@ -148,12 +152,13 @@ return googleSignIn();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( dynamic email,  dynamic password,  dynamic displayname)  signupPressed,required TResult Function( dynamic email,  dynamic password)  loginPressed,required TResult Function()  googleSignIn,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( dynamic email,  dynamic password,  dynamic displayname)  signupPressed,required TResult Function( dynamic email,  dynamic password)  loginPressed,required TResult Function()  googleSignIn,required TResult Function()  logout,}) {final _that = this;
 switch (_that) {
 case SignupPressed():
 return signupPressed(_that.email,_that.password,_that.displayname);case LoginPressed():
 return loginPressed(_that.email,_that.password);case GoogleSignIn():
-return googleSignIn();case _:
+return googleSignIn();case Logout():
+return logout();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +175,13 @@ return googleSignIn();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( dynamic email,  dynamic password,  dynamic displayname)?  signupPressed,TResult? Function( dynamic email,  dynamic password)?  loginPressed,TResult? Function()?  googleSignIn,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( dynamic email,  dynamic password,  dynamic displayname)?  signupPressed,TResult? Function( dynamic email,  dynamic password)?  loginPressed,TResult? Function()?  googleSignIn,TResult? Function()?  logout,}) {final _that = this;
 switch (_that) {
 case SignupPressed() when signupPressed != null:
 return signupPressed(_that.email,_that.password,_that.displayname);case LoginPressed() when loginPressed != null:
 return loginPressed(_that.email,_that.password);case GoogleSignIn() when googleSignIn != null:
-return googleSignIn();case _:
+return googleSignIn();case Logout() when logout != null:
+return logout();case _:
   return null;
 
 }
@@ -354,9 +360,41 @@ String toString() {
 
 
 /// @nodoc
+
+
+class Logout implements SignupEvent {
+  const Logout();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Logout);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SignupEvent.logout()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$SignupState {
 
- bool? get Issuccess; bool? get Isloading; bool? get Isfailure; String get Errormessage;
+ bool get Issuccess; bool get Isloading; bool get Isfailure; AuthLoadingStatus get loadingtype; String get Errormessage;
 /// Create a copy of SignupState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -367,16 +405,16 @@ $SignupStateCopyWith<SignupState> get copyWith => _$SignupStateCopyWithImpl<Sign
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupState&&(identical(other.Issuccess, Issuccess) || other.Issuccess == Issuccess)&&(identical(other.Isloading, Isloading) || other.Isloading == Isloading)&&(identical(other.Isfailure, Isfailure) || other.Isfailure == Isfailure)&&(identical(other.Errormessage, Errormessage) || other.Errormessage == Errormessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupState&&(identical(other.Issuccess, Issuccess) || other.Issuccess == Issuccess)&&(identical(other.Isloading, Isloading) || other.Isloading == Isloading)&&(identical(other.Isfailure, Isfailure) || other.Isfailure == Isfailure)&&(identical(other.loadingtype, loadingtype) || other.loadingtype == loadingtype)&&(identical(other.Errormessage, Errormessage) || other.Errormessage == Errormessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,Issuccess,Isloading,Isfailure,Errormessage);
+int get hashCode => Object.hash(runtimeType,Issuccess,Isloading,Isfailure,loadingtype,Errormessage);
 
 @override
 String toString() {
-  return 'SignupState(Issuccess: $Issuccess, Isloading: $Isloading, Isfailure: $Isfailure, Errormessage: $Errormessage)';
+  return 'SignupState(Issuccess: $Issuccess, Isloading: $Isloading, Isfailure: $Isfailure, loadingtype: $loadingtype, Errormessage: $Errormessage)';
 }
 
 
@@ -387,7 +425,7 @@ abstract mixin class $SignupStateCopyWith<$Res>  {
   factory $SignupStateCopyWith(SignupState value, $Res Function(SignupState) _then) = _$SignupStateCopyWithImpl;
 @useResult
 $Res call({
- bool? Issuccess, bool? Isloading, bool? Isfailure, String Errormessage
+ bool Issuccess, bool Isloading, bool Isfailure, AuthLoadingStatus loadingtype, String Errormessage
 });
 
 
@@ -404,12 +442,13 @@ class _$SignupStateCopyWithImpl<$Res>
 
 /// Create a copy of SignupState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? Issuccess = freezed,Object? Isloading = freezed,Object? Isfailure = freezed,Object? Errormessage = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? Issuccess = null,Object? Isloading = null,Object? Isfailure = null,Object? loadingtype = null,Object? Errormessage = null,}) {
   return _then(_self.copyWith(
-Issuccess: freezed == Issuccess ? _self.Issuccess : Issuccess // ignore: cast_nullable_to_non_nullable
-as bool?,Isloading: freezed == Isloading ? _self.Isloading : Isloading // ignore: cast_nullable_to_non_nullable
-as bool?,Isfailure: freezed == Isfailure ? _self.Isfailure : Isfailure // ignore: cast_nullable_to_non_nullable
-as bool?,Errormessage: null == Errormessage ? _self.Errormessage : Errormessage // ignore: cast_nullable_to_non_nullable
+Issuccess: null == Issuccess ? _self.Issuccess : Issuccess // ignore: cast_nullable_to_non_nullable
+as bool,Isloading: null == Isloading ? _self.Isloading : Isloading // ignore: cast_nullable_to_non_nullable
+as bool,Isfailure: null == Isfailure ? _self.Isfailure : Isfailure // ignore: cast_nullable_to_non_nullable
+as bool,loadingtype: null == loadingtype ? _self.loadingtype : loadingtype // ignore: cast_nullable_to_non_nullable
+as AuthLoadingStatus,Errormessage: null == Errormessage ? _self.Errormessage : Errormessage // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -495,10 +534,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? Issuccess,  bool? Isloading,  bool? Isfailure,  String Errormessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool Issuccess,  bool Isloading,  bool Isfailure,  AuthLoadingStatus loadingtype,  String Errormessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _$signupState() when $default != null:
-return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessage);case _:
+return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.loadingtype,_that.Errormessage);case _:
   return orElse();
 
 }
@@ -516,10 +555,10 @@ return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessa
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? Issuccess,  bool? Isloading,  bool? Isfailure,  String Errormessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool Issuccess,  bool Isloading,  bool Isfailure,  AuthLoadingStatus loadingtype,  String Errormessage)  $default,) {final _that = this;
 switch (_that) {
 case _$signupState():
-return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessage);case _:
+return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.loadingtype,_that.Errormessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -536,10 +575,10 @@ return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessa
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? Issuccess,  bool? Isloading,  bool? Isfailure,  String Errormessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool Issuccess,  bool Isloading,  bool Isfailure,  AuthLoadingStatus loadingtype,  String Errormessage)?  $default,) {final _that = this;
 switch (_that) {
 case _$signupState() when $default != null:
-return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessage);case _:
+return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.loadingtype,_that.Errormessage);case _:
   return null;
 
 }
@@ -551,12 +590,13 @@ return $default(_that.Issuccess,_that.Isloading,_that.Isfailure,_that.Errormessa
 
 
 class _$signupState implements SignupState {
-   _$signupState({this.Issuccess = false, this.Isloading = false, this.Isfailure = false, this.Errormessage = ''});
+   _$signupState({this.Issuccess = false, this.Isloading = false, this.Isfailure = false, this.loadingtype = AuthLoadingStatus.none, this.Errormessage = ''});
   
 
-@override@JsonKey() final  bool? Issuccess;
-@override@JsonKey() final  bool? Isloading;
-@override@JsonKey() final  bool? Isfailure;
+@override@JsonKey() final  bool Issuccess;
+@override@JsonKey() final  bool Isloading;
+@override@JsonKey() final  bool Isfailure;
+@override@JsonKey() final  AuthLoadingStatus loadingtype;
 @override@JsonKey() final  String Errormessage;
 
 /// Create a copy of SignupState
@@ -569,16 +609,16 @@ _$$signupStateCopyWith<_$signupState> get copyWith => __$$signupStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$signupState&&(identical(other.Issuccess, Issuccess) || other.Issuccess == Issuccess)&&(identical(other.Isloading, Isloading) || other.Isloading == Isloading)&&(identical(other.Isfailure, Isfailure) || other.Isfailure == Isfailure)&&(identical(other.Errormessage, Errormessage) || other.Errormessage == Errormessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$signupState&&(identical(other.Issuccess, Issuccess) || other.Issuccess == Issuccess)&&(identical(other.Isloading, Isloading) || other.Isloading == Isloading)&&(identical(other.Isfailure, Isfailure) || other.Isfailure == Isfailure)&&(identical(other.loadingtype, loadingtype) || other.loadingtype == loadingtype)&&(identical(other.Errormessage, Errormessage) || other.Errormessage == Errormessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,Issuccess,Isloading,Isfailure,Errormessage);
+int get hashCode => Object.hash(runtimeType,Issuccess,Isloading,Isfailure,loadingtype,Errormessage);
 
 @override
 String toString() {
-  return 'SignupState(Issuccess: $Issuccess, Isloading: $Isloading, Isfailure: $Isfailure, Errormessage: $Errormessage)';
+  return 'SignupState(Issuccess: $Issuccess, Isloading: $Isloading, Isfailure: $Isfailure, loadingtype: $loadingtype, Errormessage: $Errormessage)';
 }
 
 
@@ -589,7 +629,7 @@ abstract mixin class _$$signupStateCopyWith<$Res> implements $SignupStateCopyWit
   factory _$$signupStateCopyWith(_$signupState value, $Res Function(_$signupState) _then) = __$$signupStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool? Issuccess, bool? Isloading, bool? Isfailure, String Errormessage
+ bool Issuccess, bool Isloading, bool Isfailure, AuthLoadingStatus loadingtype, String Errormessage
 });
 
 
@@ -606,12 +646,13 @@ class __$$signupStateCopyWithImpl<$Res>
 
 /// Create a copy of SignupState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? Issuccess = freezed,Object? Isloading = freezed,Object? Isfailure = freezed,Object? Errormessage = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? Issuccess = null,Object? Isloading = null,Object? Isfailure = null,Object? loadingtype = null,Object? Errormessage = null,}) {
   return _then(_$signupState(
-Issuccess: freezed == Issuccess ? _self.Issuccess : Issuccess // ignore: cast_nullable_to_non_nullable
-as bool?,Isloading: freezed == Isloading ? _self.Isloading : Isloading // ignore: cast_nullable_to_non_nullable
-as bool?,Isfailure: freezed == Isfailure ? _self.Isfailure : Isfailure // ignore: cast_nullable_to_non_nullable
-as bool?,Errormessage: null == Errormessage ? _self.Errormessage : Errormessage // ignore: cast_nullable_to_non_nullable
+Issuccess: null == Issuccess ? _self.Issuccess : Issuccess // ignore: cast_nullable_to_non_nullable
+as bool,Isloading: null == Isloading ? _self.Isloading : Isloading // ignore: cast_nullable_to_non_nullable
+as bool,Isfailure: null == Isfailure ? _self.Isfailure : Isfailure // ignore: cast_nullable_to_non_nullable
+as bool,loadingtype: null == loadingtype ? _self.loadingtype : loadingtype // ignore: cast_nullable_to_non_nullable
+as AuthLoadingStatus,Errormessage: null == Errormessage ? _self.Errormessage : Errormessage // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

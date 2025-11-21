@@ -29,20 +29,23 @@ class _SignInState extends State<Signup> {
         log("state Isloading ${state.Isloading}");
         print("//////////////////////////////////");
 
-        if (state.Isfailure == true) {
+        if (state.Isfailure == true &&
+            state.loadingtype == AuthLoadingStatus.signup) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.Errormessage)));
         }
 
-        if (state.Isloading == true) {
+        if (state.Isloading == true &&
+            state.loadingtype == AuthLoadingStatus.signup) {
           Center(child: CircularProgressIndicator());
         }
 
-        if (state.Issuccess == true) {
+        if (state.Issuccess == true &&
+            state.loadingtype == AuthLoadingStatus.signup) {
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text("Login Success")));
+          ).showSnackBar(SnackBar(content: Text("Sign Up Successfully")));
           user.clear();
           email.clear();
           password.clear();

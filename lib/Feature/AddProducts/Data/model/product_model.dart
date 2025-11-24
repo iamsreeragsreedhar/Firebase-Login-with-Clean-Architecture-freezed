@@ -4,7 +4,7 @@ class AddProductModel extends AddProductEnttiy {
   AddProductModel({
     required super.name,
     required super.descption,
-    required super.imageUrl,
+    required super.image,
     required super.price,
   });
 
@@ -13,7 +13,7 @@ class AddProductModel extends AddProductEnttiy {
       name: json['productname'] ?? " ",
       descption: json['description'] ?? "",
       price: json['price'] ?? " ",
-      imageUrl: json['imageurl'] ?? " ",
+      image: json['image'] ?? " ",
     );
   }
 
@@ -22,7 +22,7 @@ class AddProductModel extends AddProductEnttiy {
       "name": name,
       "description": descption,
       "price": price,
-      "imageurl": imageUrl,
+      "image": image,
     };
   }
 }

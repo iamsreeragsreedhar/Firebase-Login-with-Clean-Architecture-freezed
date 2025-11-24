@@ -7,6 +7,7 @@ import 'package:fire_bse/Feature/AddProducts/Presentation/addproduct/addproduct_
 import 'package:fire_bse/Feature/Homepage/Data/Datasource/product_datasource.dart';
 import 'package:fire_bse/Feature/Homepage/Data/repository/product_repository_impl.dart';
 import 'package:fire_bse/Feature/Homepage/Domain/repository/product_repository.dart';
+import 'package:fire_bse/Feature/Homepage/Domain/usecase/firebse_product.dart';
 import 'package:fire_bse/Feature/Homepage/Domain/usecase/product_usecase.dart';
 import 'package:fire_bse/Feature/Homepage/Presentation/BLOC/product/product_bloc.dart';
 import 'package:fire_bse/Feature/Notification/Data/dataSource/notification_souce.dart';
@@ -58,6 +59,9 @@ Future<void> init() async {
   sl.registerLazySingleton<ProductUsecase>(
     () => ProductUsecase(productrepository: sl()),
   );
+  sl.registerLazySingleton<FirebseProductsUsecase>(()=>FirebseProductsUsecase(
+    repo: sl()
+  ));
 
   ///////repository
   sl.registerLazySingleton<ProductRepository>(
@@ -65,10 +69,10 @@ Future<void> init() async {
   );
 
   //// datasource
-  sl.registerLazySingleton<ProductDatasource>(() => ProductDatasourceImpl());
+  sl.registerLazySingleton<ProductDatasource>(() => ProductDatasourceImpl(store: sl()));
 
   ///// Bloc
-  sl.registerFactory(() => ProductBloc(sl()));
+  sl.registerFactory(() => ProductBloc(sl(),sl()));
 
   //////////////Notificaion
   sl.registerFactory(() => NotificationBloc(sl(), sl()));

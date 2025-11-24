@@ -7,6 +7,8 @@ abstract class ProductState with _$ProductState {
 @Default(false)bool issuccess,
 @Default(false)bool isfailure,
 @Default('') String errormessage,
-@Default([]) List<ProductEntity>DataList })=_$productState;
+@Default([]) List<ProductEntity>DataList,
+@Default([]) List<Firebaseproductentity>firebaseDataList
+ })=_$productState;
  
 }

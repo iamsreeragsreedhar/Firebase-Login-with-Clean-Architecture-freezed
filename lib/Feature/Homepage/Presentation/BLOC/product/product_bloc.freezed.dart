@@ -14,61 +14,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductEvent {
 
- String get endpoints;
-/// Create a copy of ProductEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ProductEventCopyWith<ProductEvent> get copyWith => _$ProductEventCopyWithImpl<ProductEvent>(this as ProductEvent, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEvent&&(identical(other.endpoints, endpoints) || other.endpoints == endpoints));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEvent);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,endpoints);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductEvent(endpoints: $endpoints)';
+  return 'ProductEvent()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ProductEventCopyWith<$Res>  {
-  factory $ProductEventCopyWith(ProductEvent value, $Res Function(ProductEvent) _then) = _$ProductEventCopyWithImpl;
-@useResult
-$Res call({
- String endpoints
-});
-
-
-
-
-}
-/// @nodoc
-class _$ProductEventCopyWithImpl<$Res>
-    implements $ProductEventCopyWith<$Res> {
-  _$ProductEventCopyWithImpl(this._self, this._then);
-
-  final ProductEvent _self;
-  final $Res Function(ProductEvent) _then;
-
-/// Create a copy of ProductEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? endpoints = null,}) {
-  return _then(_self.copyWith(
-endpoints: null == endpoints ? _self.endpoints : endpoints // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
+class $ProductEventCopyWith<$Res>  {
+$ProductEventCopyWith(ProductEvent _, $Res Function(ProductEvent) __);
 }
 
 
@@ -86,11 +55,12 @@ extension ProductEventPatterns on ProductEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetProdcts value)?  getProdcts,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetProdcts value)?  getProdcts,TResult Function( GetProdctsfromBase value)?  getProdctsfromBase,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case GetProdcts() when getProdcts != null:
-return getProdcts(_that);case _:
+return getProdcts(_that);case GetProdctsfromBase() when getProdctsfromBase != null:
+return getProdctsfromBase(_that);case _:
   return orElse();
 
 }
@@ -108,11 +78,12 @@ return getProdcts(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetProdcts value)  getProdcts,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetProdcts value)  getProdcts,required TResult Function( GetProdctsfromBase value)  getProdctsfromBase,}){
 final _that = this;
 switch (_that) {
 case GetProdcts():
-return getProdcts(_that);case _:
+return getProdcts(_that);case GetProdctsfromBase():
+return getProdctsfromBase(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -129,11 +100,12 @@ return getProdcts(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetProdcts value)?  getProdcts,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetProdcts value)?  getProdcts,TResult? Function( GetProdctsfromBase value)?  getProdctsfromBase,}){
 final _that = this;
 switch (_that) {
 case GetProdcts() when getProdcts != null:
-return getProdcts(_that);case _:
+return getProdcts(_that);case GetProdctsfromBase() when getProdctsfromBase != null:
+return getProdctsfromBase(_that);case _:
   return null;
 
 }
@@ -150,10 +122,11 @@ return getProdcts(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String endpoints)?  getProdcts,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String endpoints)?  getProdcts,TResult Function()?  getProdctsfromBase,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case GetProdcts() when getProdcts != null:
-return getProdcts(_that.endpoints);case _:
+return getProdcts(_that.endpoints);case GetProdctsfromBase() when getProdctsfromBase != null:
+return getProdctsfromBase();case _:
   return orElse();
 
 }
@@ -171,10 +144,11 @@ return getProdcts(_that.endpoints);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String endpoints)  getProdcts,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String endpoints)  getProdcts,required TResult Function()  getProdctsfromBase,}) {final _that = this;
 switch (_that) {
 case GetProdcts():
-return getProdcts(_that.endpoints);case _:
+return getProdcts(_that.endpoints);case GetProdctsfromBase():
+return getProdctsfromBase();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +165,11 @@ return getProdcts(_that.endpoints);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String endpoints)?  getProdcts,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String endpoints)?  getProdcts,TResult? Function()?  getProdctsfromBase,}) {final _that = this;
 switch (_that) {
 case GetProdcts() when getProdcts != null:
-return getProdcts(_that.endpoints);case _:
+return getProdcts(_that.endpoints);case GetProdctsfromBase() when getProdctsfromBase != null:
+return getProdctsfromBase();case _:
   return null;
 
 }
@@ -209,11 +184,11 @@ class GetProdcts implements ProductEvent {
   const GetProdcts(this.endpoints);
   
 
-@override final  String endpoints;
+ final  String endpoints;
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $GetProdctsCopyWith<GetProdcts> get copyWith => _$GetProdctsCopyWithImpl<GetProdcts>(this, _$identity);
 
@@ -239,7 +214,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $GetProdctsCopyWith<$Res> implements $ProductEventCopyWith<$Res> {
   factory $GetProdctsCopyWith(GetProdcts value, $Res Function(GetProdcts) _then) = _$GetProdctsCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  String endpoints
 });
@@ -258,7 +233,7 @@ class _$GetProdctsCopyWithImpl<$Res>
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? endpoints = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? endpoints = null,}) {
   return _then(GetProdcts(
 null == endpoints ? _self.endpoints : endpoints // ignore: cast_nullable_to_non_nullable
 as String,
@@ -269,9 +244,41 @@ as String,
 }
 
 /// @nodoc
+
+
+class GetProdctsfromBase implements ProductEvent {
+  const GetProdctsfromBase();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetProdctsfromBase);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ProductEvent.getProdctsfromBase()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$ProductState {
 
- bool get isloading; bool get issuccess; bool get isfailure; String get errormessage; List<ProductEntity> get DataList;
+ bool get isloading; bool get issuccess; bool get isfailure; String get errormessage; List<ProductEntity> get DataList; List<Firebaseproductentity> get firebaseDataList;
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -282,16 +289,16 @@ $ProductStateCopyWith<ProductState> get copyWith => _$ProductStateCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.isloading, isloading) || other.isloading == isloading)&&(identical(other.issuccess, issuccess) || other.issuccess == issuccess)&&(identical(other.isfailure, isfailure) || other.isfailure == isfailure)&&(identical(other.errormessage, errormessage) || other.errormessage == errormessage)&&const DeepCollectionEquality().equals(other.DataList, DataList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.isloading, isloading) || other.isloading == isloading)&&(identical(other.issuccess, issuccess) || other.issuccess == issuccess)&&(identical(other.isfailure, isfailure) || other.isfailure == isfailure)&&(identical(other.errormessage, errormessage) || other.errormessage == errormessage)&&const DeepCollectionEquality().equals(other.DataList, DataList)&&const DeepCollectionEquality().equals(other.firebaseDataList, firebaseDataList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isloading,issuccess,isfailure,errormessage,const DeepCollectionEquality().hash(DataList));
+int get hashCode => Object.hash(runtimeType,isloading,issuccess,isfailure,errormessage,const DeepCollectionEquality().hash(DataList),const DeepCollectionEquality().hash(firebaseDataList));
 
 @override
 String toString() {
-  return 'ProductState(isloading: $isloading, issuccess: $issuccess, isfailure: $isfailure, errormessage: $errormessage, DataList: $DataList)';
+  return 'ProductState(isloading: $isloading, issuccess: $issuccess, isfailure: $isfailure, errormessage: $errormessage, DataList: $DataList, firebaseDataList: $firebaseDataList)';
 }
 
 
@@ -302,7 +309,7 @@ abstract mixin class $ProductStateCopyWith<$Res>  {
   factory $ProductStateCopyWith(ProductState value, $Res Function(ProductState) _then) = _$ProductStateCopyWithImpl;
 @useResult
 $Res call({
- bool isloading, bool issuccess, bool isfailure, String errormessage, List<ProductEntity> DataList
+ bool isloading, bool issuccess, bool isfailure, String errormessage, List<ProductEntity> DataList, List<Firebaseproductentity> firebaseDataList
 });
 
 
@@ -319,14 +326,15 @@ class _$ProductStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isloading = null,Object? issuccess = null,Object? isfailure = null,Object? errormessage = null,Object? DataList = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isloading = null,Object? issuccess = null,Object? isfailure = null,Object? errormessage = null,Object? DataList = null,Object? firebaseDataList = null,}) {
   return _then(_self.copyWith(
 isloading: null == isloading ? _self.isloading : isloading // ignore: cast_nullable_to_non_nullable
 as bool,issuccess: null == issuccess ? _self.issuccess : issuccess // ignore: cast_nullable_to_non_nullable
 as bool,isfailure: null == isfailure ? _self.isfailure : isfailure // ignore: cast_nullable_to_non_nullable
 as bool,errormessage: null == errormessage ? _self.errormessage : errormessage // ignore: cast_nullable_to_non_nullable
 as String,DataList: null == DataList ? _self.DataList : DataList // ignore: cast_nullable_to_non_nullable
-as List<ProductEntity>,
+as List<ProductEntity>,firebaseDataList: null == firebaseDataList ? _self.firebaseDataList : firebaseDataList // ignore: cast_nullable_to_non_nullable
+as List<Firebaseproductentity>,
   ));
 }
 
@@ -411,10 +419,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList,  List<Firebaseproductentity> firebaseDataList)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _$productState() when $default != null:
-return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList);case _:
+return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList,_that.firebaseDataList);case _:
   return orElse();
 
 }
@@ -432,10 +440,10 @@ return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessa
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList,  List<Firebaseproductentity> firebaseDataList)  $default,) {final _that = this;
 switch (_that) {
 case _$productState():
-return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList);case _:
+return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList,_that.firebaseDataList);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -452,10 +460,10 @@ return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessa
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isloading,  bool issuccess,  bool isfailure,  String errormessage,  List<ProductEntity> DataList,  List<Firebaseproductentity> firebaseDataList)?  $default,) {final _that = this;
 switch (_that) {
 case _$productState() when $default != null:
-return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList);case _:
+return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessage,_that.DataList,_that.firebaseDataList);case _:
   return null;
 
 }
@@ -467,7 +475,7 @@ return $default(_that.isloading,_that.issuccess,_that.isfailure,_that.errormessa
 
 
 class _$productState implements ProductState {
-  const _$productState({this.isloading = false, this.issuccess = false, this.isfailure = false, this.errormessage = '', final  List<ProductEntity> DataList = const []}): _DataList = DataList;
+  const _$productState({this.isloading = false, this.issuccess = false, this.isfailure = false, this.errormessage = '', final  List<ProductEntity> DataList = const [], final  List<Firebaseproductentity> firebaseDataList = const []}): _DataList = DataList,_firebaseDataList = firebaseDataList;
   
 
 @override@JsonKey() final  bool isloading;
@@ -481,6 +489,13 @@ class _$productState implements ProductState {
   return EqualUnmodifiableListView(_DataList);
 }
 
+ final  List<Firebaseproductentity> _firebaseDataList;
+@override@JsonKey() List<Firebaseproductentity> get firebaseDataList {
+  if (_firebaseDataList is EqualUnmodifiableListView) return _firebaseDataList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_firebaseDataList);
+}
+
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
@@ -492,16 +507,16 @@ _$$productStateCopyWith<_$productState> get copyWith => __$$productStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$productState&&(identical(other.isloading, isloading) || other.isloading == isloading)&&(identical(other.issuccess, issuccess) || other.issuccess == issuccess)&&(identical(other.isfailure, isfailure) || other.isfailure == isfailure)&&(identical(other.errormessage, errormessage) || other.errormessage == errormessage)&&const DeepCollectionEquality().equals(other._DataList, _DataList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$productState&&(identical(other.isloading, isloading) || other.isloading == isloading)&&(identical(other.issuccess, issuccess) || other.issuccess == issuccess)&&(identical(other.isfailure, isfailure) || other.isfailure == isfailure)&&(identical(other.errormessage, errormessage) || other.errormessage == errormessage)&&const DeepCollectionEquality().equals(other._DataList, _DataList)&&const DeepCollectionEquality().equals(other._firebaseDataList, _firebaseDataList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isloading,issuccess,isfailure,errormessage,const DeepCollectionEquality().hash(_DataList));
+int get hashCode => Object.hash(runtimeType,isloading,issuccess,isfailure,errormessage,const DeepCollectionEquality().hash(_DataList),const DeepCollectionEquality().hash(_firebaseDataList));
 
 @override
 String toString() {
-  return 'ProductState(isloading: $isloading, issuccess: $issuccess, isfailure: $isfailure, errormessage: $errormessage, DataList: $DataList)';
+  return 'ProductState(isloading: $isloading, issuccess: $issuccess, isfailure: $isfailure, errormessage: $errormessage, DataList: $DataList, firebaseDataList: $firebaseDataList)';
 }
 
 
@@ -512,7 +527,7 @@ abstract mixin class _$$productStateCopyWith<$Res> implements $ProductStateCopyW
   factory _$$productStateCopyWith(_$productState value, $Res Function(_$productState) _then) = __$$productStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isloading, bool issuccess, bool isfailure, String errormessage, List<ProductEntity> DataList
+ bool isloading, bool issuccess, bool isfailure, String errormessage, List<ProductEntity> DataList, List<Firebaseproductentity> firebaseDataList
 });
 
 
@@ -529,14 +544,15 @@ class __$$productStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isloading = null,Object? issuccess = null,Object? isfailure = null,Object? errormessage = null,Object? DataList = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isloading = null,Object? issuccess = null,Object? isfailure = null,Object? errormessage = null,Object? DataList = null,Object? firebaseDataList = null,}) {
   return _then(_$productState(
 isloading: null == isloading ? _self.isloading : isloading // ignore: cast_nullable_to_non_nullable
 as bool,issuccess: null == issuccess ? _self.issuccess : issuccess // ignore: cast_nullable_to_non_nullable
 as bool,isfailure: null == isfailure ? _self.isfailure : isfailure // ignore: cast_nullable_to_non_nullable
 as bool,errormessage: null == errormessage ? _self.errormessage : errormessage // ignore: cast_nullable_to_non_nullable
 as String,DataList: null == DataList ? _self._DataList : DataList // ignore: cast_nullable_to_non_nullable
-as List<ProductEntity>,
+as List<ProductEntity>,firebaseDataList: null == firebaseDataList ? _self._firebaseDataList : firebaseDataList // ignore: cast_nullable_to_non_nullable
+as List<Firebaseproductentity>,
   ));
 }
 

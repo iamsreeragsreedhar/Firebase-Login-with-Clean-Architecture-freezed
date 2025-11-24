@@ -11,6 +11,7 @@ class AddproductBloc extends Bloc<AddproductEvent, AddproductState> {
   final AddProductUsecase usecase;
   AddproductBloc(this.usecase) : super( AddproductState()) {
     on<AddproductEvent>(_addnewproducts);
+    // on<add>(_addnewproducts);
   }
 
   _addnewproducts(AddproductEvent event, Emitter<AddproductState> emit) async {

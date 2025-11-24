@@ -14,7 +14,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:custom_quick_alert/custom_quick_alert.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -28,6 +30,7 @@ void main() async {
   await init();
 
   runApp(const MyApp());
+  CustomQuickAlert.initialize(navigatorKey);
 }
 
 class MyApp extends StatelessWidget {
@@ -38,18 +41,20 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SignupBloc(sl(), sl(), sl())),
-        BlocProvider(create: (_) => ProductBloc(sl())),
+        BlocProvider(create: (_) => ProductBloc(sl(),sl())),
         BlocProvider(create: (_) => NotificationBloc(sl(), sl())),
-        BlocProvider(create: (_) => AddproductBloc(sl(),)),
+        BlocProvider(create: (_) => AddproductBloc(sl())),
       ],
       child: MaterialApp(
+          navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
+        // home: NotificationPage(),
+        home: Homepage(),
         // home: LoginPage(),
-        home: AddProduct(),
       ),
     );
   }

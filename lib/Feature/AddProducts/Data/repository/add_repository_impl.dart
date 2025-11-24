@@ -11,7 +11,7 @@ class AddRepositoryImpl extends AddProductRepository{
   Future<void> Addproducts(AddProductEnttiy entity) {
     final Productdetails =AddProductModel(
       descption: entity.descption,
-      imageUrl: entity.imageUrl,
+      image: entity.image,
       name: entity.name,
       price: entity.price
     );
